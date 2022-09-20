@@ -1,0 +1,33 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <div class="card">
+                <div class="card-body text-center">
+                    <span class="titulo">LISTA DE TAREFAS</span>
+                    <button type="button" class="btn btn-success float-end" routerLink="/criar-tarefa">Adicionar Tarefa</button>
+                    <table *ngIf="listTarefas.length > 0" class="table table-group-divider mt-5 ">
+                        <thead>
+                          <tr>
+                            <th scope="col">Prioridade</th>
+                            <th scope="col">Nome</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor = "let tarefa of listTarefas">
+                            <td>{{tarefa.Prioridade_Tarefa}}</td>
+                            <td>{{tarefa.Nome_Tarefa}}</td>
+                            <td>
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked> 
+                                <i [routerLink]="['/editar-tarefa',tarefa._id]" class="fa-solid fa-pen-to-square text-primary"></i>
+                                <i (click) = "excluirTarefa(tarefa._id)" class="fa-solid fa-trash-can text-danger"></i>
+                                      
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <h5 style="text-align:start; margin-top: 10px;"*ngIf="listTarefas.length == 0">Não há tarefas para mostrar</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
